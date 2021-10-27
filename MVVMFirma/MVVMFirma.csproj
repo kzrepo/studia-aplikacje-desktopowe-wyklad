@@ -36,8 +36,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -60,6 +69,48 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Helper\BaseCommand.cs" />
+    <Compile Include="Model\Entities\Adres.cs">
+      <DependentUpon>ModelFaktury.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\Faktura.cs">
+      <DependentUpon>ModelFaktury.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\Kontrahent.cs">
+      <DependentUpon>ModelFaktury.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\ModelFaktury.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelFaktury.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\ModelFaktury.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelFaktury.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\ModelFaktury.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelFaktury.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\PozycjaFaktury.cs">
+      <DependentUpon>ModelFaktury.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\Rodzaj.cs">
+      <DependentUpon>ModelFaktury.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\SposobPlatnosci.cs">
+      <DependentUpon>ModelFaktury.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\Status.cs">
+      <DependentUpon>ModelFaktury.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\sysdiagrams.cs">
+      <DependentUpon>ModelFaktury.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\Towar.cs">
+      <DependentUpon>ModelFaktury.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\CommandViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
@@ -121,6 +172,15 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Model\Entities\ModelFaktury.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelFaktury.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="App.Config" />
+    <None Include="Model\Entities\ModelFaktury.edmx.diagram">
+      <DependentUpon>ModelFaktury.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -177,8 +237,21 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="ModelS\" />
+    <Content Include="Model\Entities\ModelFaktury.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelFaktury.Context.cs</LastGenOutput>
+      <DependentUpon>ModelFaktury.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model\Entities\ModelFaktury.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelFaktury.edmx</DependentUpon>
+      <LastGenOutput>ModelFaktury.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
