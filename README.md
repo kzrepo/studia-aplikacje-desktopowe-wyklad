@@ -11,6 +11,12 @@ Semestr 5 - mgr Artur Kornatka
    1. Plik z rozszerzeniem .sql zawiera skrypt do utworzenia bazy danych
    1. Plik z rozszerzeniem .bak zawiera pełną bazę razem z danymi
 
+### URUCHOMIENIE PROJEKTU
+
+1. Sklonuj projekt na swój dysk twardy `git clone https://github.com/kzrepo/studia-aplikacje-desktopowe-projekt.git`
+2. Utwórz bazę danych w SSMS ze skryptu lub odtwórz z backupu
+3. Uruchom VS i w pliku App.Config podmień w linii 8 fragment `data source=Y700\SQLEXPRESS;` na `data source=NazwaTwojegoSerwera;`
+4. Od tego momentu aplikacja powinna mieć połączenie z lokalną bazą danych
 
 ### NOTATKI Z ZAJĘĆ + MATERIAŁY DODAKTOWE
 
