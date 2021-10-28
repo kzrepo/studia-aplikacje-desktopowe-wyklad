@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
+// 06-1 Nowa kontrolka Custom Control, która będzie zawierała element wspólny dla widoków, których nazwy rozpoczynają się od Wszystkie
 namespace MVVMFirma.Views
 {
     /// <summary>
@@ -32,6 +33,8 @@ namespace MVVMFirma.Views
     ///     <MyNamespace:WszystkieViewBase/>
     ///
     /// </summary>
+
+    // 06-2 Do kontrolki dodajemy dziedziczenie po UserControl
     public class WszystkieViewBase : UserControl
     {
         static WszystkieViewBase()
