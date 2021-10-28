@@ -60,3 +60,4 @@ Entity Framework to narzędzie Microsoft do mapowania danych na obiekty w C#
 7. NEW Connection... > Test Conncetion > Sprawdzamy połączenie z bazą > Next
 8. Wybieramy elementy bazy, które chcemy podłączyć do aplikacji > Finish
 9. Dostęp do bazy danych powienien być docelowo wydzielony do oddzielnego projektu w solucji
+
