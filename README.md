@@ -5,8 +5,14 @@ Semestr 5 - mgr Artur Kornatka
 
 ### 01 INFO
 
-1. Pierwszy komit zawiera oryginalne pliki otrzymane na zajęciach, dodałem tylko .gitignore, README.md oraz LICENSE
-2. Folder z bazą danych nazywa się SQL i znajduje się w głównym folderze projektu
+1. Wyszukiwanie zmian w projekcie
+   - Od punktu **06** rozpoczynają się zmiany w kodzie projektu, które zostały udokomentowane komentarzami w kodzie. Można łatwo przeglądać zmiany punkt po punkcie.
+   - Otwórz `Edit > Find and Replace > Find in Files (Ctrl+Shift+F)`
+   - W polu wyszukiwania wpisz numer punktu i myślnik (np. 06-)
+   - Wybierz w `Look in > Entire solution` kliknij `Find All`
+   - W otworzonym oknie można przeglądać zmiany punkt po punkcie 
+2. Pierwszy komit zawiera oryginalne pliki otrzymane na zajęciach, dodałem tylko .gitignore, README.md oraz LICENSE
+3. Folder z bazą danych nazywa się SQL i znajduje się w głównym folderze projektu
    - Plik z rozszerzeniem .sql zawiera skrypt do utworzenia bazy danych
    - Plik z rozszerzeniem .bak zawiera pełną bazę razem z danymi
 
@@ -47,7 +53,7 @@ Entity Framework to narzędzie Microsoft do mapowania danych na obiekty w C#
 
 ### 05 PROCEDURA GENEROWANIA MODELU Z DOSTĘPEM DO BAZY DANYCH 
 
-1. Otwórz aplikację do kórej chcesz podłączyć bazę danych
+1. Otwórz aplikację do której chcesz podłączyć bazę danych
 2. PPM na Model i Add > New Folder > Entities
    - Aplikację budujemy za pomocą wzorca projektowego MVVM (Model-View-ViewModel) gdzie:
    - **Model** zawiera klasy logiki biznesowej (bliczeniowe) i klasy dostępu do bazy danych.
@@ -62,6 +68,7 @@ Entity Framework to narzędzie Microsoft do mapowania danych na obiekty w C#
 9. Dostęp do bazy danych powienien być docelowo wydzielony do oddzielnego projektu w solucji
 
 ### 06 PROCEDURA TWORZENIA WIDOKÓW DZIEDZICZONYCH
+#### Na przykładzie Towarów
 
 1. Solution Explorer > Views > Add > New item... > WPF > Custom Control (WPF)
    - https://wpf-tutorial.com/usercontrols-and-customcontrols/creating-using-a-usercontrol/
