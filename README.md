@@ -76,5 +76,33 @@ Entity Framework to narzędzie Microsoft do mapowania danych na obiekty w C#
 3. Przy tworzeniu Custom Control oprócz klasy w katalogu głównym projektu tworzony jest folder Themes, a w nim plik Generic.xaml, który steruje wyglądem tego Custom Control-a
 4. Weryfikujemy `xmlns:local="clr-namespace: NameSpaces` czy wskazuje na NameSpace w którym znajduje się plik C# z odpowiednią klasą
 5. Odpowiada za miejsce wklejenia widoku, który dziedziczy z tego Custom Control
-6. Ustawienie dziedziczenia Custom Control we WszystkieTowaryView.xaml.cs
+6. Ustawienie dziedziczenia Custom Control we `WszystkieTowaryView.xaml.cs`
 7. Elementy zdefiniowane w pliku .xaml zostaną umieszczone w ContentPresenter z pliku Generic.xaml
+
+### 07 PROCEDURA WYŚWIETLANIA TABELI (REKORWÓW I WYBRANYCH KOLUMN) BEZ KLUCZA OBCEGO
+#### Na przykładzie Towarów
+
+1. Kontrolka DataGrid odpowiada za wyświetlenie odpowiednich kolumn i rekordów pobranych z bazy danych i dodajemy ją do pliku `WszystkieTowaryView.xaml`
+2. AutoGeneratingColumn odpowiada za to czy zostaną automatycznie wygenerowane wszystkie rekordy z tabeli
+3. Należy utworzyć klasę `WszystkieTowaryViewModel.cs` i dodać tam kod umożliwiający pobieranie danych z bazy danych. We wzorcu MVVM dla każdego View jest odpowiadający mu ViewModel.
+4. Do pliku `WszystkieTowaryViewModel.cs` dodajemy obiekt klasy FakturyEntities, który jest odpowiedzialny za połączenie, pobieranie i aktualizcję danych w bazie.
+5. Tworzymy komendę, którą podłączymy pod przycisk, a ona wywoła funckję.
+6. Tworzymy obiekt `ObservableCollection<T>`,  przechowwujący wszystkie pobrane z bazy danych towary.
+7. Komenda klasy ICommand posiada tylko getter i w nim sprawdzamy czy _LoadCommand jest zainicjalizowane i jeśli nie to tworzymy nową komendę w której wskazujemy funkcję do wywołania.
+8. Tworzymy listę towarów, które zostały pobrane z bazy i dodajemy getter i seeter. Jeśli lista jest pusta to uruchamiamy funkcję load(), gdy listę aktualizujemy to automatycznie odświeżamy okno.
+9. Utworzenie obiektu bazy danych
+10. Utworzenie funkcju load() w której użyto LINQ
+11. Połącz View z ViewModelem w Views > MainWindowsResources
+12. Edytuj Views > WszystkieTowaryView i dokonaj bindowania danych
+
+
+
+
+
+
+
+
+### PYTANIA DO WYKŁADU
+1. W którym momencie pobierane są dane z bazy? W momencie tworzenia obiektu `fakturyEntities` we `WszystkieTowaryViewModel` czy dopiero gdy zostanie wywołana funkcja `load()`
+2. Do czego i kiedy używamy w `WszystkieTowaryViewModel` `LoadCommand`. Czy będzie to używane dopiero przy filtrowaniu pól?
+3. Sprawdzić jak działa obiekt `List`, pownieważ będzie on taki sam dla wszystkich widoków, w jaki zatem sposób będzie się zmieniała jego zawartość w zależności od widoku?
