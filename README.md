@@ -80,7 +80,7 @@ Entity Framework to narzędzie Microsoft do mapowania danych na obiekty w C#
 7. Elementy zdefiniowane w pliku .xaml zostaną umieszczone w ContentPresenter z pliku Generic.xaml
 
 ### 07 PROCEDURA WYŚWIETLANIA TABELI (REKORWÓW I WYBRANYCH KOLUMN) BEZ KLUCZA OBCEGO
-#### Na przykładzie Towarów
+#### Aby zobaczyć ten punk zmień aktywny branch na `git checkout wyswietlanie-tabel-bez-abstrakcji`. Branch nie był mergowany z main i po uaktywnieniu main nie będą widoczny
 
 1. Kontrolka DataGrid odpowiada za wyświetlenie odpowiednich kolumn i rekordów pobranych z bazy danych i dodajemy ją do pliku `WszystkieTowaryView.xaml`
 2. AutoGeneratingColumn odpowiada za to czy zostaną automatycznie wygenerowane wszystkie rekordy z tabeli
@@ -96,6 +96,7 @@ Entity Framework to narzędzie Microsoft do mapowania danych na obiekty w C#
 12. Edytuj Views > WszystkieTowaryView i dokonaj bindowania danych
 
 ### 08 UPDATE BAZY DANYCH
+
 1. W SSMS wybieramy tabelę, którą chcemy updateować
 2. PPM na tabeli > Design > Dodajemy odpowiednie pole
 3. Zapisać i odświeżyć bazę danych
@@ -103,6 +104,26 @@ Entity Framework to narzędzie Microsoft do mapowania danych na obiekty w C#
 5. VS > ModelFaktury.edmx > PPM na pustym miejscu > Update Model From Database
 6. Nic nie zaznaczamy tylko klikamy Finish
 7. Wszsytkie klasy odpowiedzialne za połączenie z bazą danych zostają w pełni odświeżone, więc nie ma sensu w nich nic modyfikować, bo i tak zostanie skasowane
+
+### 09 POBIERANIE DANYCH ZA POMOCĄ LINQ
+
+1. W Modelu tworzymy folder EntiesForView w w nim klasę TowarForView.cs
+2. Tworzymy zapytanie LINQ w pliku `WszystkieTowaryViewModel.cs`
+3. Dzięki MVVM i bindowaniu nie musieliśmy zmianiać nic w `WszystkieTowaryView.cs` ponieważ widok jest niezależny od danych i pobiera dane z listy, na której dane już są przygotowane do wyświetlenia.
+4. Do widoków można też używać View z SLQ i zamiast tabali pobierać View. Używamy go tak samo jak tabeli.
+5. Nie jest profesjonalnie używanie SQL w C#, lepiej SQL przenieść do bazy danych w postaci widoków, procedur i funkcji.
+
+### 10 PRODEDURA ABSTRAKCYJNEGO WYŚWIELTANIA - USUWANIE REDUNDANCJI I REFAKTORYZACJA KODU
+
+1. `PPM na ViewModels > Add > New Folder > Abstract`, następnie `PPM na ViewModels > Abstract > Add > Class > WszystkieVIewModel.cs`
+2. Zmieniamy klasę WszystkieViewModel w klasę generyczną
+3. Zmieniamy _List w listę generyczną
+4. Zmieniamy List w listę generyczną
+5. W konstruktorze dodajemy paramtert, który będzie nawą zakładki
+6. Konstruktor będzie także tworzył bazę danych
+7. Funkcja load() jest abstrakcyjna ponieważ będzie miała swoją implementację dla każdego ViewModel
+8. Edytuj WszystkieTowarayViewModel i zmień tam dziedziczenie na WszystkieViewModel
+
 
 
 
