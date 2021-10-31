@@ -27,6 +27,7 @@ namespace MVVMFirma.Model.Entities
         public Nullable<decimal> StawkaVatSprzedazy { get; set; }
         public Nullable<decimal> Marza { get; set; }
         public Nullable<bool> CzyAktywny { get; set; }
+        public Nullable<decimal> Cena { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PozycjaFaktury> PozycjaFaktury { get; set; }

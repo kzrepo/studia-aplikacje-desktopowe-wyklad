@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FakturyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FakturyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Adres">
           <Key>
             <PropertyRef Name="IdAdresu" />
@@ -99,6 +99,7 @@
           <Property Name="StawkaVatSprzedazy" Type="decimal" Precision="18" Scale="0" />
           <Property Name="Marza" Type="decimal" Precision="18" Scale="0" />
           <Property Name="CzyAktywny" Type="bit" />
+          <Property Name="Cena" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <Association Name="FK_Faktura_Kontrahent">
           <End Role="Kontrahent" Type="Self.Kontrahent" Multiplicity="0..1" />
@@ -223,8 +224,7 @@
             <End Role="PozycjaFaktury" EntitySet="PozycjaFaktury" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FakturyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -336,6 +336,7 @@
           <Property Name="Marza" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="CzyAktywny" Type="Boolean" />
           <NavigationProperty Name="PozycjaFaktury" Relationship="Self.FK_PozycjaFaktury_Towar" FromRole="Towar" ToRole="PozycjaFaktury" />
+          <Property Name="Cena" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
         <Association Name="FK_Kontrahent_Adres">
           <End Role="Adres" Type="Self.Adres" Multiplicity="0..1" />
@@ -560,6 +561,7 @@
           <EntitySetMapping Name="Towar">
             <EntityTypeMapping TypeName="FakturyModel.Towar">
               <MappingFragment StoreEntitySet="Towar">
+                <ScalarProperty Name="Cena" ColumnName="Cena" />
                 <ScalarProperty Name="IdTowaru" ColumnName="IdTowaru" />
                 <ScalarProperty Name="Kod" ColumnName="Kod" />
                 <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />

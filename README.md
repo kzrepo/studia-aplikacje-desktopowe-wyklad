@@ -95,6 +95,14 @@ Entity Framework to narzędzie Microsoft do mapowania danych na obiekty w C#
 11. Połącz View z ViewModelem w Views > MainWindowsResources
 12. Edytuj Views > WszystkieTowaryView i dokonaj bindowania danych
 
+### 08 UPDATE BAZY DANYCH
+1. W SSMS wybieramy tabelę, którą chcemy updateować
+2. PPM na tabeli > Design > Dodajemy odpowiednie pole
+3. Zapisać i odświeżyć bazę danych
+4. PPM na tabeli > Edit Top 200 Rows > Uzupełnić cenę w rekordach
+5. VS > ModelFaktury.edmx > PPM na pustym miejscu > Update Model From Database
+6. Nic nie zaznaczamy tylko klikamy Finish
+7. Wszsytkie klasy odpowiedzialne za połączenie z bazą danych zostają w pełni odświeżone, więc nie ma sensu w nich nic modyfikować, bo i tak zostanie skasowane
 
 
 
