@@ -1,11 +1,11 @@
-﻿using System;
+﻿using MVVMFirma.Helper;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Collections.ObjectModel;
-using MVVMFirma.Helper;
-using System.Diagnostics;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.Linq;
 using System.Windows.Data;
 using System.Windows.Input;
 
@@ -29,7 +29,7 @@ namespace MVVMFirma.ViewModels
         {
             get
             {
-                if (_NowyTowarCommand == null)
+                if(_NowyTowarCommand == null)
                     _NowyTowarCommand = new BaseCommand(() => CreateView(new NowyTowarViewModel()));//
                 return _NowyTowarCommand;
             }
@@ -38,7 +38,7 @@ namespace MVVMFirma.ViewModels
         {
             get
             {
-                if (_Commands == null)
+                if(_Commands == null)
                 {
                     List<CommandViewModel> cmds = this.CreateCommands();
                     _Commands = new ReadOnlyCollection<CommandViewModel>(cmds);
@@ -50,7 +50,7 @@ namespace MVVMFirma.ViewModels
         {
             return new List<CommandViewModel>
             {
-                //tu
+                // 07-13 Utworzenie komendy
                 new CommandViewModel(
                     "Towary",
                     new BaseCommand(() => this.ShowAllTowar())),
@@ -58,7 +58,7 @@ namespace MVVMFirma.ViewModels
                 new CommandViewModel(
                     "Towar",
                     new BaseCommand(() => this.CreateView(new NowyTowarViewModel()))),
-                
+
                 new CommandViewModel(
                     "Kontrahenci",
                     new BaseCommand(() => this.ShowAllKontrahent())),
@@ -66,8 +66,8 @@ namespace MVVMFirma.ViewModels
                  new CommandViewModel(
                     "Kontrahent",
                     new BaseCommand(() => this.CreateView(new NowyKontrahentViewModel()))),
-
-                new CommandViewModel(
+                 // 11-6 Utworzenie komendy
+                 new CommandViewModel(
                     "Faktury",
                     new BaseCommand(() => this.ShowAllFaktura())),
 
@@ -91,7 +91,7 @@ namespace MVVMFirma.ViewModels
         {
             get
             {
-                if (_Workspaces == null)
+                if(_Workspaces == null)
                 {
                     _Workspaces = new ObservableCollection<WorkspaceViewModel>();
                     _Workspaces.CollectionChanged += this.OnWorkspacesChanged;
@@ -101,12 +101,12 @@ namespace MVVMFirma.ViewModels
         }
         private void OnWorkspacesChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            if (e.NewItems != null && e.NewItems.Count != 0)
-                foreach (WorkspaceViewModel workspace in e.NewItems)
+            if(e.NewItems != null && e.NewItems.Count != 0)
+                foreach(WorkspaceViewModel workspace in e.NewItems)
                     workspace.RequestClose += this.OnWorkspaceRequestClose;
 
-            if (e.OldItems != null && e.OldItems.Count != 0)
-                foreach (WorkspaceViewModel workspace in e.OldItems)
+            if(e.OldItems != null && e.OldItems.Count != 0)
+                foreach(WorkspaceViewModel workspace in e.OldItems)
                     workspace.RequestClose -= this.OnWorkspaceRequestClose;
         }
         private void OnWorkspaceRequestClose(object sender, EventArgs e)
@@ -131,7 +131,7 @@ namespace MVVMFirma.ViewModels
             WszystkieZamowieniaViewModel workspace =
                 this.Workspaces.FirstOrDefault(vm => vm is WszystkieZamowieniaViewModel)
                 as WszystkieZamowieniaViewModel;
-            if (workspace == null)
+            if(workspace == null)
             {
                 workspace = new WszystkieZamowieniaViewModel();
                 this.Workspaces.Add(workspace);
@@ -144,7 +144,7 @@ namespace MVVMFirma.ViewModels
             WszyscyKontrahenciViewModel workspace =
                 this.Workspaces.FirstOrDefault(vm => vm is WszyscyKontrahenciViewModel)
                 as WszyscyKontrahenciViewModel;
-            if (workspace == null)
+            if(workspace == null)
             {
                 workspace = new WszyscyKontrahenciViewModel();
                 this.Workspaces.Add(workspace);
@@ -152,12 +152,13 @@ namespace MVVMFirma.ViewModels
 
             this.SetActiveWorkspace(workspace);
         }
+        // 11-7  Utworzyć funkcję pokazującą wszystkie faktury
         private void ShowAllFaktura()
         {
             WszystkieFakturyViewModel workspace =
                 this.Workspaces.FirstOrDefault(vm => vm is WszystkieFakturyViewModel)
                 as WszystkieFakturyViewModel;
-            if (workspace == null)
+            if(workspace == null)
             {
                 workspace = new WszystkieFakturyViewModel();
                 this.Workspaces.Add(workspace);
@@ -165,13 +166,13 @@ namespace MVVMFirma.ViewModels
 
             this.SetActiveWorkspace(workspace);
         }
-        //
+        // 07-14  Utworzyć funkcję pokazującą wszystkie faktury
         private void ShowAllTowar()
         {
             WszystkieTowaryViewModel workspace =
                 this.Workspaces.FirstOrDefault(vm => vm is WszystkieTowaryViewModel)
                 as WszystkieTowaryViewModel;
-            if (workspace == null)
+            if(workspace == null)
             {
                 workspace = new WszystkieTowaryViewModel();
                 this.Workspaces.Add(workspace);
@@ -185,7 +186,7 @@ namespace MVVMFirma.ViewModels
             Debug.Assert(this.Workspaces.Contains(workspace));
 
             ICollectionView collectionView = CollectionViewSource.GetDefaultView(this.Workspaces);
-            if (collectionView != null)
+            if(collectionView != null)
                 collectionView.MoveCurrentTo(workspace);
         }
         #endregion

@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MVVMFirma.Views"
+             xmlns:local="clr-namespace:MVVMFirma.Views" 
+             xmlns:viewmodels="clr-namespace:MVVMFirma.ViewModels" 
+             d:DataContext="{d:DesignInstance Type=viewmodels:WszystkieFakturyViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -32,22 +34,18 @@
                     <ColumnDefinition Width="100"/>
                     <ColumnDefinition Width="100"/>
                 </Grid.ColumnDefinitions>
-                
-                
-                
-                
             </Grid>
         </Expander>
-        
-        <DataGrid Grid.Row="1">
+        <!-- 11-4 bindowanie danych z Listą utworzoną we WszystkieFakturyViewModel -->
+        <DataGrid Grid.Row="1" AutoGenerateColumns="False" ItemsSource="{Binding List}">
             <DataGrid.Columns>
-                <DataGridCheckBoxColumn/>
-                <DataGridTextColumn Header="Numer"/>
-                <DataGridTextColumn Header="Status"/>
-                <DataGridTextColumn Header="Data wystawienia"/>
-                <DataGridTextColumn Header="Magazyn"/>
-                <DataGridTextColumn Header="Kontrahent"/>
-                <DataGridTextColumn Header="Miasto"/>
+                <DataGridTextColumn Header="Numer" Binding="{Binding Numer}"/>
+                <DataGridTextColumn Header="Data wystawienia" Binding="{Binding DataWystawienia}"/>
+                <DataGridTextColumn Header="Nazwa kontrahenta" Binding="{Binding KontrahentNazwa}"/>
+                <DataGridTextColumn Header="NIP" Binding="{Binding KontrahentNip}"/>
+                <DataGridTextColumn Header="Adres" Binding="{Binding KontrahentAdres}"/>
+                <DataGridTextColumn Header="Termin płatności" Binding="{Binding TerminPlatnosci}"/>
+                <DataGridTextColumn Header="Sposób płatności" Binding="{Binding SposobPlatnosciNazwa}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

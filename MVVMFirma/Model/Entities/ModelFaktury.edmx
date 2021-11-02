@@ -68,6 +68,7 @@
             <PropertyRef Name="IdSposobuPlatnosci" />
           </Key>
           <Property Name="IdSposobuPlatnosci" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="50" />
           <Property Name="CzyAktywny" Type="bit" />
         </EntityType>
         <EntityType Name="Status">
@@ -95,11 +96,11 @@
           <Property Name="IdTowaru" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Kod" Type="nvarchar" MaxLength="50" />
           <Property Name="Nazwa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cena" Type="decimal" Precision="18" Scale="0" />
           <Property Name="StawkaVatZakupu" Type="decimal" Precision="18" Scale="0" />
           <Property Name="StawkaVatSprzedazy" Type="decimal" Precision="18" Scale="0" />
           <Property Name="Marza" Type="decimal" Precision="18" Scale="0" />
           <Property Name="CzyAktywny" Type="bit" />
-          <Property Name="Cena" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <Association Name="FK_Faktura_Kontrahent">
           <End Role="Kontrahent" Type="Self.Kontrahent" Multiplicity="0..1" />
@@ -302,8 +303,9 @@
             <PropertyRef Name="IdSposobuPlatnosci" />
           </Key>
           <Property Name="IdSposobuPlatnosci" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CzyAktywny" Type="Boolean" />
           <NavigationProperty Name="Faktura" Relationship="Self.FK_Faktura_SposobPlatnosci" FromRole="SposobPlatnosci" ToRole="Faktura" />
+          <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CzyAktywny" Type="Boolean" />
         </EntityType>
         <EntityType Name="Status">
           <Key>
@@ -331,12 +333,12 @@
           <Property Name="IdTowaru" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Kod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cena" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="StawkaVatZakupu" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="StawkaVatSprzedazy" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Marza" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="CzyAktywny" Type="Boolean" />
           <NavigationProperty Name="PozycjaFaktury" Relationship="Self.FK_PozycjaFaktury_Towar" FromRole="Towar" ToRole="PozycjaFaktury" />
-          <Property Name="Cena" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
         <Association Name="FK_Kontrahent_Adres">
           <End Role="Adres" Type="Self.Adres" Multiplicity="0..1" />
@@ -533,6 +535,7 @@
           <EntitySetMapping Name="SposobPlatnosci">
             <EntityTypeMapping TypeName="FakturyModel.SposobPlatnosci">
               <MappingFragment StoreEntitySet="SposobPlatnosci">
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
                 <ScalarProperty Name="IdSposobuPlatnosci" ColumnName="IdSposobuPlatnosci" />
                 <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
               </MappingFragment>

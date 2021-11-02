@@ -18,10 +18,10 @@
     <DataTemplate DataType="{x:Type vm:NowaFakturaViewModel}">
         <vw:NowaFakturaView/>
     </DataTemplate>
+    <!-- 11-5 Połącz View z ViewModelem -->
     <DataTemplate DataType="{x:Type vm:WszystkieFakturyViewModel}">
         <vw:WszystkieFakturyView/>
     </DataTemplate>
-
     <DataTemplate DataType="{x:Type vm:WszystkieZamowieniaViewModel}">
         <vw:WszystkieZamowieniaView/>
     </DataTemplate>

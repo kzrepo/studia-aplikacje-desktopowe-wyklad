@@ -94,6 +94,8 @@ Entity Framework to narzędzie Microsoft do mapowania danych na obiekty w C#
 10. Utworzenie funkcju load() w której użyto LINQ
 11. Połącz View z ViewModelem w Views > MainWindowsResources
 12. Edytuj Views > WszystkieTowaryView i dokonaj bindowania danych
+13. Utworzyć komendę w MainWindowViewModel.cs
+14. Utworzyć funkcję, która pokazuje wszystkie faktury w MainWindowViewModel.cs
 
 ### 08 UPDATE BAZY DANYCH
 
@@ -124,6 +126,17 @@ Entity Framework to narzędzie Microsoft do mapowania danych na obiekty w C#
 7. Funkcja load() jest abstrakcyjna ponieważ będzie miała swoją implementację dla każdego ViewModel
 8. Edytuj WszystkieTowarayViewModel i zmień tam dziedziczenie na WszystkieViewModel
 
+### 11 PRODEDURA WYŚWIETLANIA TABELI Z KLUCZEM OBCYM
+#### Na przykładzie Faktur
+
+1. `PPM na model > Add > New Folder > EntitiesForView` folder już istnieje
+2. `EntitiesForView > Add > New Class > FakturaForView.cs`
+3. `PPM na ViewModels > Add > New Class/Edytuj > WszsytkieFakturyViewModel.cs`
+4. `PPM na Views > Add/Edytuj > WszystkieFakturyView.xaml` dodajemy bindowanie danych
+5. W MainWindowsResources sprawdzić czy jest powiązanie ViewModel z View i czy widok jest podlinkowany na stronie głównej (patrz przedmiot Tworzenie interfejsów użytkownika)
+6. Utworzyć komendę w MainWindowViewModel.cs
+7. Utworzyć funkcję, która pokazuje wszystkie faktury w MainWindowViewModel.cs
+8. Dodać do bazy brakujące dane
 
 
 
@@ -135,3 +148,4 @@ Entity Framework to narzędzie Microsoft do mapowania danych na obiekty w C#
 1. W którym momencie pobierane są dane z bazy? W momencie tworzenia obiektu `fakturyEntities` we `WszystkieTowaryViewModel` czy dopiero gdy zostanie wywołana funkcja `load()`
 2. Do czego i kiedy używamy w `WszystkieTowaryViewModel` `LoadCommand`. Czy będzie to używane dopiero przy filtrowaniu pól?
 3. Sprawdzić jak działa obiekt `List`, pownieważ będzie on taki sam dla wszystkich widoków, w jaki zatem sposób będzie się zmieniała jego zawartość w zależności od widoku?
+4. W jaki sposób we WszytkieFakturyViewModel.cs w zapytaniu LINQ można dodać `if` sprawdzający czy jest numer mieszkania?

@@ -69,6 +69,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Helper\BaseCommand.cs" />
+    <Compile Include="Model\EntitiesForView\FakturaForAllView.cs" />
     <Compile Include="Model\EntitiesForView\TowarForView.cs" />
     <Compile Include="Model\Entities\Adres.cs">
       <DependentUpon>ModelFaktury.tt</DependentUpon>
